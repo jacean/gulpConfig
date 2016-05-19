@@ -160,13 +160,14 @@ gulp执行任务的入口是gulpfile.js，这个是一句package.json的"main"�
 ```
 ##### 任务分离
 为以后维护方便，可将gulp任务单独放在文件夹里按功能分类,将入口导向至功能文件处。
+
 ```
 //gulpfile.js
-
 var requireDir = require('require-dir');
 requireDir('./gulp/tasks', { recurse: true});
 ```
 在项目根目录下新建gulp文件夹，建立子文件夹tasks和util，分别放置针对特定类型的功能模块和通用功能模块，新建配置文件config.js.
+
 ```
 gulpConfig/
     |--gulp/                                gulp任务执行所需
@@ -181,11 +182,12 @@ gulpConfig/
 config.js里统一设置源路径和编译路径，传出各个任务所需配置。
 ##### 插件功能设置
 以less为例
+
 ```
 //config.js
 
 var src = './src';
-var dest = './dist';
+var dest = './dist/'+config.name+"-"+config.version+'/';
 module.exports = {
     less: {
         all: src + "/less/**/*.less",  //所有less
@@ -213,11 +215,13 @@ gulp.task('less', function(){
 
 #### 错误提示
 gulp的任务系统是基于orchestrator的，提供的事件如下：
+
 ```
 // FRAGILE: ASSUME: this list is an exhaustive list of events emitted
 var events = ['start','stop','err','task_start','task_stop','task_err','task_not_found','task_recursion'];
 ```
 监听方法如下
+
 ```
 var gulp = require('gulp');
 gulp.task('default',function(){
@@ -233,6 +237,7 @@ gulp.task('default',function(){
 ```
 把错误消息通知出来又不中断gulp监听，我们需要安装gulp-notify。
 然后，在gulp文件夹下的util内新建handleErrors.js文件
+
 ```
 //handleErrors.js
 
@@ -251,6 +256,7 @@ module.exports = function(){
 };
 ```
 然后在功能任务中引入此模块。
+
 ```
 //script.js
 
