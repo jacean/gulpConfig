@@ -1,4 +1,4 @@
-/* gulp命令会由gulpfile.js运行，所以src和build文件夹路径如下（根目录下） */
+/* gulp命令由gulpfile.js运行，所以src和dist文件夹路径如下（根目录下） */
 var src = './src';
 var dest = './dist';
 
@@ -32,4 +32,4 @@ module.exports = {
 
         }
     }
-}
+};

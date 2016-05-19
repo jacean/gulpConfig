@@ -193,8 +193,28 @@ a{b,c}d{e,f}g 会展开为 abdeg,acdeg,abdeg,abdfg
 
 
 
-
-
+## git移除远程仓库里已经被提交但需要忽略的文件
+预览要移除的远程文件
+```
+$ git rm -r -n --cached src/image/*
+rm 'src/image/2.png'
+rm 'src/image/backimg.jpg'
+rm 'src/image/huazhou.png'
+rm 'src/image/shutterstock.png'
+rm 'src/image/书边框.png'
+rm 'src/image/金色.png'
+```
+移除远程文件
+```
+$ git rm --cached src/image/*
+rm 'src/image/2.png'
+rm 'src/image/backimg.jpg'
+rm 'src/image/huazhou.png'
+rm 'src/image/shutterstock.png'
+rm 'src/image/书边框.png'
+rm 'src/image/金色.png'
+```
+然后提交推送就好
 
 ## 参考
 http://www.jianshu.com/p/f151eccc10e6

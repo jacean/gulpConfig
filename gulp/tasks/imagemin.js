@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var imagemin = require('gulp-imagemin');
-
+var handleErrors = require('../util/handleErrors');
+var utf8Convert = require('gulp-utf8-convert');
 // var imageminJpegRecompress = require('imagemin-jpeg-recompress');  //jpg图片压缩
 // var imageminOptipng = require('imagemin-optipng');  //png图片压缩
 
@@ -19,11 +20,12 @@ gulp.task('imagemin', function () {
     //         optimizationLevel: 4
     //     });
 
-    return gulp.src(config.src)         //less源文件
+    return gulp.src(config.src)
         .pipe(imagemin(
-        //     {
-        //     use: [jpgmin, pngmin]
-        // }
-        ))                             //执行编译
+            //     {
+            //     use: [jpgmin, pngmin]
+            // }
+        ))
+        .on('error', handleErrors)
         .pipe(gulp.dest(config.dest));   //输出目录
 });

@@ -1,12 +1,15 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify'); //js代码压缩
 var config = require('../config').script;
+var handleErrors = require('../util/handleErrors');
+
 
     
 gulp.task('script', function(){
-    return gulp.src(config.src)         //less源文件
-        .pipe(uglify())    //执行编译
-        .pipe(gulp.dest(config.dest)) ;  //输出目录
+    return gulp.src(config.src)        
+        .pipe(uglify())
+         .on('error',handleErrors)
+        .pipe(gulp.dest(config.dest)) ; 
 });
 
 // // js处理
