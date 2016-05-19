@@ -158,6 +158,7 @@ gulp执行任务的入口是gulpfile.js，这个是一句package.json的"main"�
   "description": "学习gulp在前端开发中的应用",
   "main": "gulpfile.js",
 ```
+
 ##### 任务分离
 为以后维护方便，可将gulp任务单独放在文件夹里按功能分类,将入口导向至功能文件处。
 
