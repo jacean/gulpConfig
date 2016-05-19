@@ -13,8 +13,11 @@
         |--js/                                  所有js文件
         |--view/                                所有html文件
 |--gulp/                                gulp任务执行所需
-    |--tasks/                               gulp各种任务文件夹
+    |--tasks/                               gulp针对特定类型的任务
         |--less.js
+        |--...
+    |--util/                                通用工具模块
+        |--handleErrors.js                      错误处理
         |--...
     |--config.js                            gulp任务所需和路径配置
 |--node_modules/                        gulp模块文件夹
@@ -95,13 +98,14 @@ save it as a dependency in the package.json file.
 ### 安装插件
 
 然后执行如下命令，安装插件。
-> npm install --save-dev gulp
+```
+npm install --save-dev gulp
 npm install --save-dev gulp-less
 npm install --save-dev gulp-watch
 npm install --save-dev require-dir
 npm install --save-dev require-dir
 ...
-
+```
 > npm install --save 与 npm install --save-dev 的区别
     --save-dev放在devDependencies里面，开发模式用devDep
     --save放在package.json 的dependencies，产品模式用dependencies 
@@ -155,19 +159,22 @@ gulp执行任务的入口是gulpfile.js，这个是一句package.json的"main"�
   "main": "gulpfile.js",
 ```
 ##### 任务分离
-为以后维护方便，可将gulp任务单独放在文件夹里按功能分类,即任务分离,将入口导向至功能文件处。
+为以后维护方便，可将gulp任务单独放在文件夹里按功能分类,将入口导向至功能文件处。
 ```
 //gulpfile.js
 
 var requireDir = require('require-dir');
 requireDir('./gulp/tasks', { recurse: true});
 ```
-在项目根目录下新建gulp文件夹，建立子文件夹tasks，配置文件config.js.
+在项目根目录下新建gulp文件夹，建立子文件夹tasks和util，分别放置针对特定类型的功能模块和通用功能模块，新建配置文件config.js.
 ```
 gulpConfig/
     |--gulp/                                gulp任务执行所需
-        |--tasks/                               gulp各种任务文件夹
+        |--tasks/                               gulp针对特定类型的任务
             |--less.js
+            |--...
+        |--util/                                通用工具模块
+            |--handleErrors.js                      错误处理
             |--...
         |--config.js                            gulp任务所需和路径配置
 ```
@@ -225,7 +232,7 @@ gulp.task('default',function(){
 });
 ```
 把错误消息通知出来又不中断gulp监听，我们需要安装gulp-notify。
-然后，在gulp文件夹下新建工具文件夹util,在其内新建handleErrors.所有js文件
+然后，在gulp文件夹下的util内新建handleErrors.js文件
 ```
 //handleErrors.js
 
@@ -286,12 +293,12 @@ SyntaxError: Use of const in strict mode.
 这多是控制台不支持utf-8的缘故，控制台默认中文编码是GBK，可以执行
 > CHCP 65001
 
-将控制台编码改为UTF-8.
+将控制台编码改为UTF-8,就可以正常显示了。
 
 ## 参考资料
 学习配置中多方参考，有些文章在学习中即看即关，最后留下了这几个。
-如果有发现我这里引用参考了您的文章，请勿怪，可留言提醒博主加上。
-[前端们，gulp该用起来了，简单的demo入门——gulp系列（一）](http://www.cnblogs.com/1wen/p/4533608.html)
+如果有发现我这里引用参考了您的文章，还请勿怪，留言提醒博主加上。
+结构参考，代码引用:[前端们，gulp该用起来了，简单的demo入门——gulp系列（一）](http://www.cnblogs.com/1wen/p/4533608.html)
 [gulp-notify处理报错----gulp系列（二)](http://www.cnblogs.com/1wen/p/4552485.html)
 [前端自动化Gulp实际使用](http://www.jianshu.com/p/f151eccc10e6)
 [Gulp安装及配合组件构建前端开发一体化](http://www.dbpoo.com/getting-started-with-gulp/)

@@ -1,6 +1,9 @@
 /* gulp命令由gulpfile.js运行，所以src和dist文件夹路径如下（根目录下） */
+// var config=require('./package.json');
+var fs=require('fs');
+var config=JSON.parse(fs.readFileSync('./package.json','utf-8'))
 var src = './src';
-var dest = './dist';
+var dest = './dist/'+config.name+"-"+config.version+'/';
 
 module.exports = {
     less: {
@@ -11,8 +14,10 @@ module.exports = {
 
         }
     },
+    //需要合并js的插件
     script: {
-        src: src + "/script/*.js",
+        all: src + "/script/**/*.js",  //所有js
+        src: src + "/script/**/*.js",
         dest: dest + "/js",
         settings: {
 

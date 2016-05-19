@@ -1,12 +1,21 @@
 var gulp = require('gulp');
 var utf8Convert = require('gulp-utf8-convert');
  
-module.exports = function(){
-    var args = Array.prototype.slice.call(arguments);
-
-   return  utf8Convert({
+gulp.task('convert',function() {
+    gulp.src("./test.txt")
+        .pipe(utf8Convert({
             encNotMatchHandle:function (file) {
-                console.log(file + "编码不正确");
+                //notify 
             }
-        }).apply(this,args);
-}
+        }))
+        .pipe(gulp.dest('./'));
+}); 
+// module.exports = function(){
+//     var args = Array.prototype.slice.call(arguments);
+
+//    return  utf8Convert({
+//             encNotMatchHandle:function (file) {
+//                 console.log(file + "编码不正确");
+//             }
+//         }).apply(this,args);
+// }

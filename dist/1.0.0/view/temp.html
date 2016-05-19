@@ -1,0 +1,252 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
+
+<!DOCTYPE html>
+
+<html >
+<head >
+    <meta http-equiv="Content-Type" content="text/html" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="Scripts/tagcloud.js"></script>
+    <style>
+        /*body {
+            background-color: #eee;
+        }*/a
+        #tagsList {
+            position: relative;
+            width: 500px;
+            height: 400px;
+            margin: -50px auto;
+            /*background-color:blue;*/
+        }
+
+        #tagsList a {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            font-family: Microsoft YaHei;
+            color:blue;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 3px 6px;
+        }
+
+        #tagsList a:hover {
+            color: #FF0000;
+            letter-spacing: 2px;
+        }
+    </style>
+
+
+    <title>where_go</title>
+</head>
+<body>
+
+<div class="panel" >
+    <div class="panel-body ">
+
+        <h1 class="">师兄师姐去哪了<br /><small >本系统基于。。。</small></h1>
+        <div class="row">
+            <div class="col-md-offset-8">
+
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('chart_force'));
+
+                option = {
+                title: {
+                text: '师兄师姐去哪了',
+                subtext: '和你有相同资质的人都去哪了',
+                x: 'left',
+                y: 'bottom'
+                },
+                tooltip: {
+                trigger: 'item',
+                formatter: '{a} : {b}'
+                },
+                toolbox: {
+                show: true,
+                feature: {
+                restore: { show: true },
+                //magicType: { show: true, type: ['force', 'chord'] },
+                saveAsImage: { show: true }
+                }
+                },
+                legend: {
+                x: 'left',
+                data: ['师兄', '师姐']
+                },
+                series: [
+                {
+                type: 'force',
+                name: "师兄师姐去哪了",
+                ribbonType: false,
+                categories: [
+                {
+                name: '人物'
+                },
+                {
+                name: '师兄'
+                },
+                {
+                name: '师姐'
+                }
+                ],
+                itemStyle: {
+                normal: {
+                label: {
+                show: true,
+                textStyle: {
+                color: '#333'
+                }
+                },
+                nodeStyle: {
+                brushType: 'both',
+                borderColor: 'rgba(255,215,0,0.4)',
+                borderWidth: 1
+                },
+                linkStyle: {
+                type: 'curve'
+                }
+                },
+                emphasis: {
+                label: {
+                show: false
+                // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
+                },
+                nodeStyle: {
+                //r: 30
+                },
+                linkStyle: {}
+                }
+                },
+                useWorker: false,
+                minRadius: 15,
+                maxRadius: 25,
+                gravity: 1.1,
+                scaling: 1.1,
+                roam: 'move',
+                nodes: [
+                { category: 0, name: '乔布斯', value: 10, label: '乔布斯\n（主要）' },    //value类似大小
+                { category: 1, name: '丽萨-乔布斯', value: 2 },
+                { category: 1, name: '保罗- 乔布斯', value: 3 },
+                { category: 1, name: '克拉拉-乔布斯', value: 3 },
+                { category: 1, name: '劳伦-鲍威尔', value: 7 },
+                { category: 2, name: '史蒂夫-沃兹尼艾克', value: 5 },
+                { category: 2, name: '奥巴马', value: 8 },
+                { category: 2, name: '比尔-盖茨', value: 9 },
+                { category: 2, name: '乔纳森-艾夫', value: 4 },
+                { category: 2, name: '蒂姆-库克', value: 4 },
+                { category: 2, name: '龙-韦恩', value: 1 },
+                ],
+                links: [
+                { source: '丽萨-乔布斯', target: '乔布斯', weight: 1, name: '女儿' },
+                { source: '保罗-乔布斯', target: '乔布斯', weight: 2, name: '父亲' },
+                { source: '克拉拉-乔布斯', target: '乔布斯', weight: 1, name: '母亲' },
+                { source: '劳伦-鲍威尔', target: '乔布斯', weight: 2 },
+                { source: '史蒂夫-沃兹尼艾克', target: '乔布斯', weight: 3, name: '合伙人' },
+                { source: '奥巴马', target: '乔布斯', weight: 1 },
+                { source: '比尔-盖茨', target: '乔布斯', weight: 6, name: '竞争对手' },
+                { source: '乔纳森-艾夫', target: '乔布斯', weight: 1, name: '爱将' },
+                { source: '蒂姆-库克', target: '乔布斯', weight: 1 },
+                { source: '龙-韦恩', target: '乔布斯', weight: 1 },
+
+                ]
+                }
+                ]
+                };
+
+
+
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+                })
+                </script>
+
+                </div>
+                </div>
+                </div>
+                </div>
+
+
+
+
+                </div>
+                </div>
+
+
+                <form runat="server">
+                        <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="denglu">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">登录</h4>
+                        </div>
+
+                        <div class="modal-body">
+
+                        <div class="form-group">
+                        <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>--%>
+                <label for="u_id" class="control-label">账号:</label>
+                <input runat="server" type="text" class="form-control" id="u_id_d"/>
+                        <%--<input id="Text1" type="text" />--%>
+                        </div>
+                        <div class="form-group">
+                        <label for="u_pwd" class="control-label">密码:</label>
+                <input runat="server" type="password" class="form-control" id="u_pwd_d"/>
+                        </div>
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <%--<asp:Button runat="server" type="button" class="btn btn-primary"  id="btn_d" text="登录" OnClick="btn_d_Click" />--%>
+                        <asp:Button ID="btn_d" runat="server" Text="登录" class="btn btn-primary" OnClick="btn_d_Click"  />
+                        </div>
+
+                        </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+
+                        <div class="modal fade" id="zhuce" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">注册</h4>
+                        </div>
+
+                        <div class="modal-body">
+
+                        <div class="form-group">
+                        <label for="u_id" class="control-label">账号:</label>
+                <input runat="server" type="text" class="form-control" id="u_id_z">
+                        </div>
+                        <div class="form-group">
+                        <label for="u_pwd" class="control-label">密码:</label>
+                <input runat="server" type="password" class="form-control" id="u_pwd_z"/>
+                        </div>
+                        <div class="form-group">
+                        <label for="u_mail" class="control-label">邮箱:</label>
+                <input runat="server" type="email" class="form-control " id="u_mail_z" placeholder="email"/>
+                        </div>
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <asp:Button type="button" class="btn btn-primary" runat="server" id="btn_z" Text="注册" OnClick="btn_z_Click"/>
+                        </div>
+
+                        </div>
+                        </div>
+                        </div>
+                        </form>
+                        </body>
+                        </html>

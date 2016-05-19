@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寻找“同窗”的你•机械校友信息</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="includes/JQuery/jquery-1.10.2.min.js"></script>
+    <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="includes/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function catchEvent(eventObj, event, eventHandle) {
+            if (eventObj.addEventListener) {
+                eventObj.addEventListener(event, eventHandle, false);
+
+            } else if (eventObj.attachEvent) {
+                event = "on" + event;
+                eventObj.attachEvent(event, eventHandle);
+            }
+        }
+        catchEvent(window, "load", setupEvents);
+        function setupEvents(evnt) {
+            catchEvent(document.getElementById("inputName"), "blur", checkRequired);
+            catchEvent(document.getElementById("inputTel"), "blur", checkRequired);
+            catchEvent(document.getElementById("inputTel"), "change", validateField);
+        }
+        function checkRequired(evnt) {
+            var theEvent = evnt ? evnt : window.event;
+            var target = theEvent.target ? theEvent.target : theEvent.srcElement;
+            var txtInput = target.value;
+            if (txtInput == null || txtInput == "") {
+                alert("请填写信息！")
+            }
+        }
+        function validateField(evnt) {
+            var theEvent = evnt ? evnt : window.event;
+            var target = theEvent.target ? theEvent.target : theEvent.srcElement;
+            var txtInput = target.value;
+            if (isNaN(txtInput)) {
+                alert("请尽量填写正确信息！");
+            }
+        }
+
+    </script>
+
+</head>
+
+<body style=" font-family: '华文新魏';font-size: 20px">
+<div class="container-fluid">
+
+    <div class="panel panel-default col-md-offset-1 col-md-10">
+        <div class="panel-group" id="accordion">
+            <div class="" style="margin-top: 50px;font-size: 20px;background-image: url('Sources/image/shutterstock.png');background-size: 100% 100%;background-repeat: no-repeat;padding: 5% 8% 5% 8%">
+                <h3 class="text-center  h1"><small>(@大工机械校友)</small>寻找同窗的你,老班长喊你回家</h3>
+                <p>活动介绍：</p>
+                <p>&emsp;&emsp;年华似水，岁月如歌。那些年，总说毕业遥遥无期，转眼却各奔东西。明天是否还惦记，曾经“同窗”的你。</p>
+                <p>&emsp;&emsp;亲爱的校友，为保持您和母校、校友的畅通联络，便于老班长组织同学们值年返校，我们特发起此次校友信息更新。凡是本次注册信息的校友，经验证无误，可参与到学校校友总会组织的各项校友活动，通过微信后台，还可寻找到曾经的老同学、老朋友！
+                </p>
+                <p class="text-right text-info">
+                    <small>(请校友们帮忙扩散！请您放心，我们将对信息进行严格保密！)</small>
+                </p>
+                <script type="text/javascript">
+                    function showmodal() {
+                        ('#myModal').modal(options);
+                    }
+                </script>
+                <p class="text-right text-primary">
+                    <small>学院介绍,请<strong><a data-toggle="modal" data-target="#myModal"
+                                            onclick="showmodal()">查看详情</a></strong></small>
+                </p>
+            </div>
+
+            <div class="panel panel-info ">
+                <div class="panel-heading" id="headingTwo">
+                    <p class="panel-title"><strong>注册</strong></p>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-4">
+                        <img src="Sources/image/backimg.jpg" style=" width: 100%;height: 100%;" alt="校友图"
+                             class="center-block"/>
+                    </div>
+                    <div class="col-md-8">
+                        <form class="form-horizontal " action="toExcel.php" method="post">
+                            <div class="form-group">
+                                <label for="inputName" class="col-md-2 control-label">姓名</label>
+
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="inputName" name="inputName"
+                                           placeholder="姓名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputClass" class="col-md-2 control-label">班级</label>
+
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="inputClass" name="inputClass"
+                                           placeholder="班级">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-2 control-label">邮箱</label>
+
+                                <div class="col-md-9">
+                                    <input type="email" class="form-control" id="inputEmail" name="inputEmail"
+                                           placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputJob" class="col-md-2 control-label">职务</label>
+
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="inputJob" name="inputJob"
+                                           placeholder="工作单位(职务)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTel" class="col-md-2 control-label">电话</label>
+
+                                <div class="col-md-9">
+                                    <input type="tel" class="form-control" id="inputTel" name="inputTel"
+                                           placeholder="电话">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="aaa" value="submitted">
+
+                                <div class="col-md-offset-2 col-md-9">
+                                    <button type="submit" class="btn btn-default">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">学院介绍</h4>
+            </div>
+            <div class="modal-body">
+                &emsp;&emsp;大连理工大学机械工程学院成立于1999年，由原机械工程系、模具研究所和工程训练中心整合而成。机械工程系成立于1949年，是我校最早设立的8个系之一。
+                学院设有10个研究所(先进制造技术与装备研究所、微机电系统与精密工程研究所、自动化技术研究所、数字化设计研究所、传感测控与精密加工技术研究所、工程机械研究所、模具研究所、振动工程研究所、CAD与网络技术研究所、可持续设计与制造研究所)，1个教研室（工程图学教研室），2个实验教学中心（工程训练中心、机械工程实验教学中心）。
+                全院现有教职工217人，其中正高职48人、博士生导师46人，副高职69人，中级职称56人。队伍中有中科院院士1人、工程院院士1人、长江学者特聘教授1人、海外高层次人才（千人计划）2人、国家杰出青年基金获得者2名、国家优秀青年科学基金获得者1人、全国高校教学名师奖获得者1人，国家973首席科学家3人、新世纪百千万人才工程国家级人选2名、教育部跨（新）世纪优秀人才支持计划获得者10名。入选国家基金委创新研究群体以及科技部重点领域创新团队。
+                学院设有2个博士后科研流动站（机械工程、仪器科学与技术），2个一级学科博士点（机械工程、仪器学科与技术），8个二级学科博士点（机械制造及其自动化、机械设计及理论、机械电子工程、车辆工程、微机电工程、工业工程、精密仪器及机械、测试计量技术及仪器），9个硕士点学科（机械制造及其自动化、机械设计及理论、机械电子工程、车辆工程、微机电工程、工业工程、模式识别与智能系统、精密仪器及机械、测试计量技术及仪器），3个大学本科专业[机械设计制造及其自动化（含日语强化、国际班）、测控技术与仪器、物流工程]。
+                迄今，共毕业本科生17654名，硕士（统招）研究生2578名，博士研究生461名，工程硕士469名，博士后出站人员78名。培养出大量优秀的毕业生，包括原中共中央政治局常委1人（尉健行）、院士5人（3位老一代毕业生中科院院士徐性初和俞鸿儒、工程院院士殷国茂，2位改革开放后的毕业生中科院院士申长雨和工程院院士郭东明）、以及一大批包括原长虹集团董事长倪润峰和现一汽集团总经理许宪平等优秀企业家。目前在校学生共3085人，其中本科学生1588人、硕士研究生（统招）885人、工程硕士433、博士研究生179人；在站博士后35名。
+                学院拥有“机械制造及其自动化”国家二级重点学科，“机械工程”和“仪器科学与技术”辽宁省一级重点学科，是国家“211工程”重点建设学科和“985工程”重点建设的科技创新平台。拥有精密与特种加工教育部重点实验室、微纳米技术及系统辽宁省重点实验室、精密/特种加工及微制造技术教育部（B）类重点实验室、模塑制品教育部工程研究中心、起重机械辽宁省工程技术研究中心等科研基地。2014年“辽宁重大装备协同创新中心”以全国总排名第二的成绩获得国家认定。
+                承担了包括国家973计划项目（首席单位）、国家973课题，国家863课题，国家支撑计划，国家重大专项，国家自然科学基金重大、重点课题等一大批国家项目和工程项目，近三年科研经费近2亿元。共获得省部委科技奖励30余项，其中“硬脆材料复杂曲面零件精密制造技术与装备”获国家科学技术发明一等奖、入选2008年中国高校十大科技进展；“关联面形约束的大型复杂曲面加工技术与装备”获国家科学技术发明二等奖；“压电石英现代测试理论、方法、系列化新型测量仪及其应用”获国家科学技术发明二等奖；“天线罩粘接及强度筛选技术与设备”获教育部科学技术发明一等奖；“硬脆材料复杂曲面天线罩精密修磨技术与设备”获教育部科学技术进步一等奖；“航空航天C/E复合材料低损伤高效加工技术与应用”获辽宁省科技进步一等奖；“关联面形约束的大型复杂曲面加工技术与装备”获高等学校技术发明一等奖。众多工程研究成果在航空航天、装备制造、工程机械等领域的研究所和企业得到转化应用。
+                “机械设计制造及其自动化专业”以优异的成绩通过全国工程教育专业认证，是国家特色专业。建成了国家级实验教学示范工程训练中心。拥有国家精品课程3门，国家级教学团队1个，辽宁省教学团队2个，辽宁省精品课程5门。获国家级教学成果奖5项、辽宁省优秀教学成果奖7项。国家、教育部和辽宁省教改项目资助30余项。共编写出版教材20本，其中国家“十五”和“十一五”规划教材13本。
+                大连理工大学机械工程学院在精密和超精密加工理论技术与装备、微纳制造技术、制造过程的测量与控制技术、重大装备的设计理论与方法等研究领域具有鲜明特色，培养人才的需求量大、认可度高，已经成为我国最具影响力的机械工程科学研究和人才培养基地之一。
+                .
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
