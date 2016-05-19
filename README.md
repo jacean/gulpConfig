@@ -290,17 +290,18 @@ gulp-livereload:  服务器控制客户端同步刷新（需配合chrome插件Li
 ```
 ### 常见问题
 1. 引入gulp-imagemin插件的时候报错
-> D:\xampp\htdocs\gulpStart\node_modules\gulp-imagemin\index.js:2
-const path = require('path');
-^^^^^
-SyntaxError: Use of const in strict mode.
+    > D:\xampp\htdocs\gulpStart\node_modules\gulp-imagemin\index.js:2
+    const path = require('path');
+    ^^^^^
+    SyntaxError: Use of const in strict mode.
 
-原因是nodejs版本太低，我原本的版本是vs2015自带node，0.x.x，更新后v4.4.4
+    原因是nodejs版本太低，我原本的版本是vs2015自带node，0.x.x，更新后v4.4.4
+
 2. notify插件提示乱码
-这多是控制台不支持utf-8的缘故，控制台默认中文编码是GBK，可以执行
-> CHCP 65001
+    这多是控制台不支持utf-8的缘故，控制台默认中文编码是GBK，可以执行
+    > CHCP 65001
 
-将控制台编码改为UTF-8,就可以正常显示了。
+    将控制台编码改为UTF-8,就可以正常显示了。
 
 ## 参考资料
 学习配置中多方参考，有些文章在学习中即看即关，最后留下了这几个。
