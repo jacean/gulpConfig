@@ -3,6 +3,14 @@
 此项目持续更新gulp的插件任务和项目结构优化。
 [gulpConfig](git@github.com:jacean/gulpConfig.git)
 
+## Tip
+npm安装模块后，会建立node_modules文件夹，里面放置各个模块，但是，模块之间互相引用导致层级过深，windows下直接删除会提示源文件路径过长，删除不了，可以使用Robcopy来删除。
+robocopy在windows10下自带，system32里，可直接在目标文件夹打开命令行执行robocopy命令。
+删除方法如下：
+在gulpConfig文件夹下新建临时文件夹t，执行
+> Robocopy /MIR t node_modules
+
+等待...稍....微....长.....一点的时间，就可以了。
 ## projectStruct:
 暂定项目结构如下。
 ```
